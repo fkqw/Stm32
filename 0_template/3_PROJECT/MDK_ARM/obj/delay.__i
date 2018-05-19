@@ -1,0 +1,6 @@
+-c --cpu Cortex-M3 -D__EVAL -g -O0 --apcs=interwork --split_sections -I..\..\0_CORE -I..\..\1_FWLIB_3_5_0\inc -I..\..\3_PROJECT
+-I D:\testCode\32\32\0515\0_template\3_PROJECT\MDK_ARM\RTE
+-I F:\software_install_filed\keill\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include
+-I F:\software_install_filed\keill\ARM\CMSIS\Include
+-D__UVISION_VERSION="514" -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER
+-o .\obj\delay.o --omf_browse .\obj\delay.crf --depend .\obj\delay.d "..\..\2_DRIVE\delay.c"

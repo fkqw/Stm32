@@ -1,0 +1,1 @@
+打开官方固件库包，定位到我们之前准备好的固件库包的目录:STM32F10x_StdPeriph_Lib_V3.5.0\Libraries\STM32F10x_StdPeriph_Driver 下面，将目录下面的 src,inc 文件夹 copy 到我们刚才建立的 STM32F10x_FWLib 文件夹下面。
