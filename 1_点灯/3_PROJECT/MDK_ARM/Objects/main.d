@@ -1,0 +1,10 @@
+.\objects\main.o: ..\main.c
+.\objects\main.o: ..\..\SYSTEM\sys\sys.h
+.\objects\main.o: ..\..\SYSTEM\sys\stm32f10x.h
+.\objects\main.o: ..\..\0_CORE\core_cm3.h
+.\objects\main.o: F:\software_install_filed\keill\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\main.o: ..\..\SYSTEM\sys\system_stm32f10x.h
+.\objects\main.o: ..\..\SYSTEM\delay\delay.h
+.\objects\main.o: ..\..\2_DRIVE\led.h
+.\objects\main.o: ..\..\SYSTEM\usart\usart.h
+.\objects\main.o: F:\software_install_filed\keill\ARM\ARMCC\Bin\..\include\stdio.h
