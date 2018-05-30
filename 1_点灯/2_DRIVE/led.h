@@ -21,8 +21,9 @@
 #define LED0  PBout(5)
 #define LED1  PEout(5)
 
-//#define LED0 (1<<5)
-//#define LED1 (1<<5)
+#define BEEP  PBout(8)
+
+
 
 
 /**
@@ -31,5 +32,11 @@
   * @retval None
   */	
 void LED_Init(void);
+/**
+  * @brief  ·äÃùÆ÷
+  * @param  None
+  * @retval None
+  */
+void BEEP_Init(void);
 
 #endif
