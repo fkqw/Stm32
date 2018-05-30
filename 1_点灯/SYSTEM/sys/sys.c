@@ -182,22 +182,40 @@ void Stm32_Clock_Init(u8 PLL)
 	MYRCC_DeInit();		  //复位并配置向量表
 	
 	//查寄存器可知道 先使能然后等待稳定
+	//从原理图上可以看到外部时钟OSC_IN 接的是8Mhz
  	RCC->CR|=0x00010000;  //外部高速时钟使能HSEON
 	while(!(RCC->CR>>17));//等待外部时钟就绪
+	
+	//8Mhz分频后APB1 变为4Mhz  
+	//APB2 不变8Mhz
+	//AHB 8Mhz
 	RCC->CFGR=0X00000400; //APB1=DIV2;APB2=DIV1;AHB=DIV1;
+	
+	
+	//7 3个111
 	PLL-=2;//抵消2个单位
+	//倍频9
 	RCC->CFGR|=PLL<<18;   //设置PLL值 2~16
-	RCC->CFGR|=1<<16;	  //PLLSRC ON 
+	
+	//使用HSE始终作为PLL输入。
+	RCC->CFGR|=1<<16;	  //PLLSRC ON   
+	
 	FLASH->ACR|=0x32;	  //FLASH 2个延时周期
-
+//RCC-CR第24位
 	RCC->CR|=0x01000000;  //PLLON
 	while(!(RCC->CR>>25));//等待PLL锁定
+	
+	//选则PLL作为系统时钟。
 	RCC->CFGR|=0x00000002;//PLL作为系统时钟	 
+	//查看寄存器SWS 系统时钟状态切换 是否成功，直到成功为止。
 	while(temp!=0x02)     //等待PLL作为系统时钟设置成功
 	{   
 		temp=RCC->CFGR>>2;
 		temp&=0x03;
 	}    
+	//最后输出的时钟频率为 PLL是72Mhz
+	//APB1是36Mhz，APB2 AHB都是72Mhz
+	
 }		    
 
 
