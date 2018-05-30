@@ -26,11 +26,11 @@
 #include "delay.h"
 #include "led.h"
 #include "usart.h"		
-
+#include "key.h"
 /* Private functions ---------------------------------------------------------*/
 
 /**
-  * @brief  ≈‹¬Ìµ∆ µ—È.
+  * @brief  Ë∑ëÈ©¨ÁÅØÂÆûÈ™å.
   * @param  None
   * @retval None
   */
@@ -38,16 +38,38 @@
 	
 int main(void)
 {
+	//u8 t;
 	Stm32_Clock_Init(9);
 	delay_init(72);
 	LED_Init();
-	BEEP_Init();
+	//BEEP_Init();	
+	KEY_Init();
+		LED0=OFF;
+		LED1=ON;
 	while(1)
 	{
-		LED0=~LED0;
-		LED1=~LED1;
-		BEEP=~BEEP;
-		delay_ms(1000);
+
+			switch(KEY_Scan(1))
+			{
+				case 0:
+					break;
+				case KEY_LEFT:
+							LED0=!LED0;
+							LED1=~LED1;
+					break;
+				case KEY_DOWN:
+							LED0=!LED0;
+							LED1=~LED1;
+					break;
+				case KEY_RIGHT:
+							LED0=!LED0;
+							LED1=~LED1;
+					break;
+				case KEY_UP:
+								LED0=!LED0;
+								LED1=~LED1;
+					break;
+			}
 
 	}
 }

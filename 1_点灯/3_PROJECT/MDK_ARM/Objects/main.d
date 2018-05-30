@@ -8,3 +8,4 @@
 .\objects\main.o: ..\..\2_DRIVE\led.h
 .\objects\main.o: ..\..\SYSTEM\usart\usart.h
 .\objects\main.o: F:\software_install_filed\keill\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: ..\..\2_DRIVE\key.h

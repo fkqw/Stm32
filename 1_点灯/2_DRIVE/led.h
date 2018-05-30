@@ -10,30 +10,30 @@
   * @author Jack Feng
   * @version V0
   * @date   2018-05-19
-  * @brief    LED0½ÓÔÚPB5 £¬LED1½ÓÔÚPE5£¬µÍµçÆ½µÆÁÁ¡£
+  * @brief    LED0æ¥åœ¨PB5 ï¼ŒLED1æ¥åœ¨PE5 çº¢è‰²ï¼Œä½ç”µå¹³ç¯äº®ã€‚
 	* 
   ******************************************************************************
   **/
 
 
 
-//Í¨¹ıºê¶¨Òå,Ö±½Ó¶¨Òåio¿Ú¡£
+//é€šè¿‡å®å®šä¹‰,ç›´æ¥å®šä¹‰ioå£ã€‚
 #define LED0  PBout(5)
 #define LED1  PEout(5)
 
 #define BEEP  PBout(8)
 
-
-
+#define ON  0
+#define OFF 1
 
 /**
-  * @brief ³õÊ¼»¯º¯Êı.
+  * @brief åˆå§‹åŒ–å‡½æ•°.
   * @param  None
   * @retval None
   */	
 void LED_Init(void);
 /**
-  * @brief  ·äÃùÆ÷
+  * @brief  èœ‚é¸£å™¨
   * @param  None
   * @retval None
   */
