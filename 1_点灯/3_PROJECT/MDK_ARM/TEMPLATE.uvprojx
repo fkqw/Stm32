@@ -438,6 +438,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\2_DRIVE\key.c</FilePath>
             </File>
+            <File>
+              <FileName>exit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\2_DRIVE\exit.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

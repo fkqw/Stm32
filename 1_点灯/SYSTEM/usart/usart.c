@@ -5,15 +5,7 @@
 #include "includes.h"					//ucos 使用	  
 #endif
 //////////////////////////////////////////////////////////////////////////////////	 
-//本程序只供学习使用，未经作者许可，不得用于其它任何用途
-//ALIENTEK STM32开发板
-//串口1初始化		   
-//正点原子@ALIENTEK
-//技术论坛:www.openedv.com
-//修改日期:2012/12/05
-//版本：V1.6
-//版权所有，盗版必究。
-//Copyright(C) 广州市星翼电子科技有限公司 2009-2019
+
 //All rights reserved
 //********************************************************************************
 //V1.3修改说明 
@@ -77,8 +69,10 @@ void USART1_IRQHandler(void)
 #ifdef OS_CRITICAL_METHOD 	//如果OS_CRITICAL_METHOD定义了,说明使用ucosII了.
 	OSIntEnter();    
 #endif
-	if(USART1->SR&(1<<5))//接收到数据
+	//读取 读数据寄存器非空。如果为1，则表示收到数据，可以读出。
+	if(USART1->SR&(1<<5))//接收到数据  
 	{	 
+		//DR 读写寄存器。
 		res=USART1->DR; 
 		if((USART_RX_STA&0x8000)==0)//接收未完成
 		{
@@ -108,6 +102,11 @@ void USART1_IRQHandler(void)
 //bound:波特率
 //CHECK OK
 //091209
+/**
+  * @brief  None  program. PA9和PA10用作串口
+  * @param  None
+  * @retval None
+  */
 void uart_init(u32 pclk2,u32 bound)
 {  	 
 	float temp;
@@ -124,6 +123,7 @@ void uart_init(u32 pclk2,u32 bound)
 	GPIOA->CRH|=0X000008B0;//IO状态设置
 		  
 	RCC->APB2RSTR|=1<<14;   //复位串口1
+	//这里有软件置1或者清零。
 	RCC->APB2RSTR&=~(1<<14);//停止复位	   	   
 	//波特率设置
  	USART1->BRR=mantissa; // 波特率设置	 
